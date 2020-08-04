@@ -2,8 +2,9 @@ import express from 'express';
 
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
-const jwtSecret = require('../../common/config/env.config.js').jwt_secret;
-const tokenExpirationInSeconds = 3600;
+const configEnv = require('../../common/config/env.config.js')
+const jwtSecret = configEnv.jwt_secret;
+const tokenExpirationInSeconds = configEnv.jwt_tokenExpirationInSeconds;
 
 export class AuthController {
     constructor() {

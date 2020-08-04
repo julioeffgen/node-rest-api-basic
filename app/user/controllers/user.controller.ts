@@ -38,9 +38,8 @@ export class UserController {
             .toString(36)
             .slice(-8);
         req.body.password = await passwordHash(pwd)
-        const message = await usersService.forgotPassword(req.body);
+        const message = await usersService.forgotPassword(req.body, pwd);
         if (message) {
-            //FIXME: Send email with new password
             res.status(200).send({ message: message });
         } else {
             res.status(400).send({ message: `User not found with: ${req.body.email}` });

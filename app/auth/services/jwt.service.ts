@@ -1,5 +1,6 @@
-const jwtSecret = require('../../common/config/env.config.js').jwt_secret;
-const tokenExpirationInSeconds = 36000;
+const configEnv = require('../../common/config/env.config.js')
+const jwtSecret = configEnv.jwt_secret;
+const tokenExpirationInSeconds = configEnv.jwt_expiration_in_seconds;
 const jwt = require('jsonwebtoken');
 let crypto = require('crypto');
 

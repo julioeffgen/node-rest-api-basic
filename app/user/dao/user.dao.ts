@@ -1,4 +1,4 @@
-import {MongooseService} from '../../common/services/mongoose.service';
+import {MongooseService, User} from '../../common/services/mongoose.service';
 import * as shortUUID from "short-uuid";
 
 export class UsersDao {
@@ -17,7 +17,7 @@ export class UsersDao {
         permissionLevel: Number
     });
 
-    User = this.mongooseService.getMongoose().model('Users', this.userSchema);
+    User = this.mongooseService.getMongoose().model<User>('Users', this.userSchema);
 
     constructor() {
     }

@@ -1,6 +1,6 @@
 import {CRUD} from '../../common/interfaces/crud.interface';
 import {UsersDao} from '../dao/user.dao';
-import SecurePass from "argon2-pass";
+import {MailSender} from '../../common/messages/email';
 
 export class UserService implements CRUD {
 
@@ -21,13 +21,15 @@ export class UserService implements CRUD {
         return UsersDao.getInstance().addUser(resource);
     }
 
-    async forgotPassword(resource: any) {
+    async forgotPassword(resource: any, pwd: string) {
         const user = await UsersDao.getInstance().findUserByEmail(resource.email);
         if (!user) {
             return null
         }
         resource._id = user._id
         await UsersDao.getInstance().patchUser(resource)
+        const mailSender = MailSender.getInstance();
+        mailSender.sendForgot(user.email, user.name, 'Forgot password', pwd).then(r => console.log(r))
         return `New password was sent to ${resource.email}`;
     }
 

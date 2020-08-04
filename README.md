@@ -9,7 +9,7 @@ With this project you are able to start your NodeJS REST API with these function
     - Users data saved in MongoDB
     - Password change
     - Function forgot password
-        - Send the new password by email (coming soon)
+        - Send the new password by email. Reference to test mail: https://ethereal.email
 - Security with JWT
     - Authentication
     - Authorization

@@ -1,5 +1,14 @@
 import mongoose from 'mongoose';
 
+export interface User extends mongoose.Document {
+    _id: String,
+    name: String,
+    email: String,
+    description: String,
+    password: String,
+    permissionLevel: Number
+}
+
 export class MongooseService {
     private static instance: MongooseService;
 
